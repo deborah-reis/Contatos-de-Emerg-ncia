@@ -1,1 +1,74 @@
-(..)
+menu_inicial = '''
+
+Olá, bem-vindo a Agenda Digital!
+Todos são conectados uns com os outros.
+
+Selecione uma opção:
+    [1] Adicionar meu contato
+    [2] Visualizar um contato
+    [0] Sair
+    
+    '''
+
+
+
+
+contatos_disponiveis = {
+  
+  "Victor": {"nome": "Victor Gomes", "telefone": "3333-2221"},
+  "Kiara": {"nome": "Kiara Fonseca", "telefone": "3443-2121"},
+  "Chappie": {"nome": "Chappie Erverton", "telefone": "3344-9871"},
+  "Zara": {"nome": "Zara Reis", "telefone": "3333-7766"},
+
+}
+
+def buscar_info (nome):
+  nome = alguem.strip().title()
+  
+  if nome in contatos_disponiveis:
+   return contatos_disponiveis[nome]
+  else:
+   return None
+
+
+while True:
+    entrada = int(input(menu_inicial))
+
+    if entrada == 0:
+      print("Fechando o sistema!")
+      break
+
+    if entrada == 1:
+     pessoa = input("Informe seu nome e sobrenome: \n").title()
+     contato_principal = str(input(f"Certo, {pessoa}, agora nos informe quem é seu contato de emergência. \n"))
+     masc2 = contato_principal.title()
+     numero = float(input(f"Seu contato de emergência é {masc2}, agora informe seu número. \n"))
+
+
+     agenda = f'''
+
+        Nome do paciente: {pessoa}
+        Contato de Emergência: {masc2}
+        Número para contato: {numero:.0f}'''
+     print(agenda)
+     print("\n    Dados Concluídos Com Sucesso!\n")
+     break
+     
+    elif entrada == 2: 
+    
+     alguem = input("Para visualizar um contato, digite o nome a qual procuras.\n").title()
+     encontrado = buscar_info(alguem)   
+
+     if encontrado:
+       print(f"\nAs informações de contato de {alguem} são:")
+       print(f'Nome: {encontrado["nome"]}')
+       print(f'Telefone: {encontrado["telefone"]}')     
+     else:
+       print("Esse contato não foi encontrado, tente novamente...")
+      
+
+    else:
+       print("Esse contato não foi encontrado, tente novamente...")
+       break
+    
+
